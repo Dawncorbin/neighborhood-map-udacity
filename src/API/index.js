@@ -8,7 +8,15 @@ class Helper {
         client_secret:"HJVFPNVFDAEFSSR4IPLCV0KLSWWEATXFVMR5LOOFYVPKXA0P",
         v:"20190131"
       };
-      return Object.keys(keys).map(key => `$[key]=${keys[key]}.join("&")`)
+      return Object.keys(keys)
+          .map(key => `$[key]=${keys[key]}
+          .join("&")`)
 
+  }
+  static headers() {
+
+    return {
+        Accept: "application/json"
+    };
   }
 }
