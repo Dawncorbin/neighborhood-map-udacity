@@ -13,10 +13,20 @@ class Helper {
           .join("&")`)
 
   }
+  static urlBuilder(urlPrams){
+      if(!urlPrams){
+          return ""
+      }
+      return Object.keys(urlPrams)
+          .map(key => ``)
+  }
   static headers() {
 
-    return {
-        Accept: "application/json"
+      return {
+          Accept: "application/json"
     };
+  }
+  static simpleFetch(endPoint,method,urlPrams){
+
   }
 }
