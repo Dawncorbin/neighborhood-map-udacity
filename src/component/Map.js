@@ -19,8 +19,10 @@ const MyMapComponent = withScriptjs(
               .filter(marker => marker.isVisible)
               .map((marker,idx) => (
         <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }}>
-          <InfoWindow>
+          {marker.isOpen && (<InfoWindow>
+            <p>Hello</p>
           </InfoWindow>
+        )}
         </Marker>
       ))}
     </GoogleMap>
