@@ -28,14 +28,15 @@ class App extends Component {
                 isOpen: false,
                 isVisible: true,
               }
-          })
+          });
+          this.setState({ venues, center, markers });
         console.log(results)
       });
   }
   render() {
     return (
       <div className="App">
-        <Map/>
+        <Map {...this.state}/>
 
       </div>
     );
