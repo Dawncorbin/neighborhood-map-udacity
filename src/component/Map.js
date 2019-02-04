@@ -9,8 +9,8 @@ const MyMapComponent = withScriptjs(
       defaultCenter={{ lat: -34.397, lng: 150.644 }}
       center={props.center}
     >
-      {props.isMarkerShown && (
-        <Marker position={{ lat: -34.397, lng: 150.644 }} />
+      {props.markers && markers.filter(marker => marker.isVisible).map((marker,idx) => (
+        <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }} />
       )}
     </GoogleMap>
   ))
