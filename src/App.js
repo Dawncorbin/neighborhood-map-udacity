@@ -4,14 +4,14 @@ import Map from './component/Map';
 import SquareAPI from './API/';
 
 class App extends Component {
-    constructor(){
+    constructor() {
         super();
-        this.state ={
-          venues:[],
-          markers:[],
-          center:[],
+        this.state = {
+          venues: [],
+          markers: [],
+          center: [],
           zoom: 12
-        }
+        };
     }
   componentDidMount() {
       SquareAPI.search({
@@ -27,10 +27,10 @@ class App extends Component {
                 lng: venue.location.lng,
                 isOpen: false,
                 isVisible: true,
-              }
+              };
           });
           this.setState({ venues, center, markers });
-        console.log(results)
+        console.log(results);
       });
   }
   render() {
