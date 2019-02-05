@@ -24,9 +24,15 @@ class App extends Component {
       this.closeAllMarkers();
       console.log(marker);
       marker.isOpen = true;
-      this.setState({markers: Object.assign(this.state.markers,marker)})
-      SquareAPI.getVenueDetails(marker.id).then(res => console.log(res));
-  }
+      this.setState({markers: Object.assign(this.state.markers,marker)});
+      const venue = this.state.venues.find(venue => venue.id === marker.id);
+
+      SquareAPI.getVenueDetails(marker.id).then(res => {
+        const newVenue = Object.assign(venue,res.response.venue);
+          this.setState({venues:Object.assign(this.state.venues,newVenue) });
+        console.log(newVenue);
+      });
+  };
   componentDidMount() {
       SquareAPI.search({
           near:'Austin,TX',
