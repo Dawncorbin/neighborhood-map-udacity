@@ -5,6 +5,11 @@ export default class listItem extends Component {
       return (
         <li className="listItem"
         onClick={() => this.props.handleListItemClick(this.props)}>
+          <img
+            src=
+              {this.props.categories[0].icon.prefix+"32"+
+               this.props.categores[0].icon.suffix}
+            alt={this.props.categories[0].name}/>
         {this.props.name}
       </li>
     );
