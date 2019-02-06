@@ -38,7 +38,7 @@ class App extends Component {
         });
   }
 
-  listItems = venue => {
+  handleMarkerClick = venue => {
     const marker = this.state.markers.find(marker => marker.id === venue.id);
     this.handleMarkerClick(marker);
   }
@@ -65,11 +65,11 @@ class App extends Component {
         console.log(results);
       });
   }
-  
+
   render() {
     return (
       <div className="App">
-          <sideBar/>
+          <sideBar {...this.state} handleMarkerClick={this.handleListItemClick}/>
         <Map {...this.state}
         handleMarkerClick={this.handleMarkerClick}/>
 
