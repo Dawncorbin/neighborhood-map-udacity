@@ -12,6 +12,16 @@
       height: 2rem;
       font-size: 1rem
     }
+    ol.venueList {
+      padding: 1rem;
+    }
+    li.listItem{
+      list-style: none;
+      font-size: 1rem;
+      padding:.5rem;
+      margin-top: 1rem;
+      box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
   }
 }
 

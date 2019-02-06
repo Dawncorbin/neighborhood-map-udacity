@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './component/Map';
 import SquareAPI from './API/';
+import sideBar from './component/sideBar';
 
 class App extends Component {
     constructor() {
@@ -13,6 +14,7 @@ class App extends Component {
           zoom: 12
         };
     }
+
   closeAllMarkers = () => {
       const markers = this.state.markers.map(marker => {
         marker.isOpen = false;
@@ -20,20 +22,28 @@ class App extends Component {
       });
       this.setState({ markers: Object.assign(this.state.markers, markers) });
     };
+
   handleMarkerClick = (marker) => {
       this.closeAllMarkers();
-      console.log(marker);
+      //console.log(marker);
       marker.isOpen = true;
       this.setState({markers: Object.assign(this.state.markers,marker)});
       const venue = this.state.venues.find(venue => venue.id === marker.id);
 
-      SquareAPI.getVenueDetails(marker.id).then(res => {
-        const newVenue = Object.assign(venue,res.response.venue);
-          this.setState({venues:Object.assign(this.state.venues,newVenue) });
-        console.log(newVenue);
-      });
-  };
-  componentDidMount() {
+      SquareAPI.getVenueDetails(marker.id)
+        .then(res => {
+          const newVenue = Object.assign(venue,res.response.venue);
+            this.setState({venues: Object.assign(this.state.venues,newVenue) });
+          console.log(newVenue);
+        });
+  }
+
+  listItems = venue => {
+    const marker = this.state.markers.find(marker => marker.id === venue.id);
+    this.handleMarkerClick(marker);
+  }
+
+  componentDidMount(){
       SquareAPI.search({
           near:'Austin,TX',
           query: 'tacos',
@@ -55,6 +65,7 @@ class App extends Component {
         console.log(results);
       });
   }
+  
   render() {
     return (
       <div className="App">
