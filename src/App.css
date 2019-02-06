@@ -23,6 +23,8 @@
         cursor: pointer;
         background: #5757fe;
         color: white;
+        display: flex;
+        align-items: center;
       }
     }
   }
