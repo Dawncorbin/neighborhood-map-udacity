@@ -4,7 +4,7 @@ import {
   withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow
+  InfoWindow,
 } from "react-google-maps";
 
 const MyMapComponent = withScriptjs(

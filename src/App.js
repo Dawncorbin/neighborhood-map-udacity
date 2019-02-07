@@ -36,7 +36,7 @@ class App extends Component {
       SquareAPI.getVenueDetails(marker.id)
         .then(res => {
           const newVenue = Object.assign(venue,res.response.venue);
-            this.setState({venues: Object.assign(this.state.venues,newVenue) });
+            this.setState({ venues: Object.assign(this.state.venues, newVenue) });
           console.log(newVenue);
         });
   }
@@ -47,6 +47,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    window.gm_authFailure = this.gm_authFailure;
       SquareAPI.search({
           near:'Austin,TX',
           query: 'tacos',
@@ -61,12 +62,15 @@ class App extends Component {
                 lng: venue.location.lng,
                 isOpen: false,
                 isVisible: true,
-                id:venue.id
+                id: venue.id
               };
           });
           this.setState({ venues, center, markers });
         console.log(results);
       });
+  }
+  gm_authFailure() {
+    window.alret("Error getting data from Google Maps")
   }
 
   render() {

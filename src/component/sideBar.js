@@ -9,40 +9,44 @@ export default class sideBar extends Component {
         venues: []
       };
   }
+  showSideBar = e => {
+      this.setState({ show : true })
+  }
 
-    handleFilterVenues = () => {
-      if (this.state.query.trim() !== "") {
-        const venues = this.props.venues.filter(venue => venue.name
-          .toLowerCase()
-          .includes(this.state.query.toLowerCase()))
-        return venues;
-      }
+  handleFilterVenues = () => {
+    if (this.state.query.trim() !== "") {
+      const venues = this.props.venues.filter(venue => venue.name
+        .toLowerCase()
+        .includes(this.state.query.toLowerCase()));
+      return venues;
+    } else {
       return this.props.venues
-    };
+    }
+  };
 
-    handleChange = e => {
-      this.setState({ query:e.target.value });
+  handleChange = e => {
+    this.setState({ query:e.target.value });
 
-      const markers = this.props.venues.map(venue => {
-        const isMatched = venue.name
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase());
-        const marker = this.props.marker.find(marker => marker.id === venue.id);
-        if(isMatched) {
-          marker.isVisible = true;
-        } else {
-          marker.isVisible = false;
-        }
-        return marker;
-      });
-      this.props.updateSuperState({ markers });
-    };
+    const markers = this.props.venues.map(venue => {
+      const isMatched = venue.name
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase());
+      const marker = this.props.marker.find(marker => marker.id === venue.id);
+      if(isMatched) {
+        marker.isVisible = true;
+      } else {
+        marker.isVisible = false;
+      }
+      return marker;
+    });
+    this.props.updateSuperState({ markers });
+  };
 
   render() {
       return (
         <div className="sideBar">
           <input
-              type={"search"}
+              input type={"search"}
               id={"search"}
               placeholder={"Search Here"}
               onChange={this.handleChange}/>
@@ -51,6 +55,6 @@ export default class sideBar extends Component {
               venues={this.handleFilterVenues()}
               handleListItemClick ={this.props.handleListItemClick}/>
         </div>
-      );
+      )
   }
 }

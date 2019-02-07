@@ -12,6 +12,6 @@ export default class listItem extends Component {
             alt={this.props.categories[0].name}/>
         {this.props.name}
       </li>
-    );
+    )
   }
 }
