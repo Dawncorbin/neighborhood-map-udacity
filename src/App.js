@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './component/Map';
 import SquareAPI from './API/';
-import SideBar from './component/SideBar';
+import sideBar from './component/sideBar';
 
 class App extends Component {
     constructor(props) {
@@ -68,7 +68,7 @@ class App extends Component {
         console.log(results);
       });
   }
-  
+
   render() {
     return (
       <div className="App">

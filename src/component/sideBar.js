@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import VenueList from './VenueList';
+import venueList from './venueList';
 
-export default class SideBar extends Component {
+export default class sideBar extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -9,7 +9,7 @@ export default class SideBar extends Component {
         venues: []
       };
   }
-  showSideBar = e => {
+  showsideBar = e => {
       this.setState({ show : true })
   }
 
@@ -53,7 +53,7 @@ export default class SideBar extends Component {
               placeholder={"Search Here"}
               onChange={this.handleChange}/>
 
-          <VenueList {...this.props}
+          <venueList {...this.props}
               venues={this.handleFilterVenues()}
               handleListItemClick ={this.props.handleListItemClick}/>
         </div>
