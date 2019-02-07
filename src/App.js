@@ -5,14 +5,14 @@ import SquareAPI from './API/';
 import sideBar from './component/sideBar';
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
           venues: [],
           markers: [],
           center: [],
-          zoom: 12
-          updateSuperState: obj =>{
+          zoom: 12,
+          updateSuperState: obj => {
             this.setState(obj);
           }
         };
@@ -22,9 +22,9 @@ class App extends Component {
       const markers = this.state.markers.map(marker => {
         marker.isOpen = false;
         return marker;
-      });
+      })
       this.setState({ markers: Object.assign(this.state.markers, markers) });
-    };
+    }
 
   handleMarkerClick = (marker) => {
       this.closeAllMarkers();
