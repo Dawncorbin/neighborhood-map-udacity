@@ -49,9 +49,9 @@ class App extends Component {
   componentDidMount(){
     window.gm_authFailure = this.gm_authFailure;
       SquareAPI.search({
-          near:'Austin,TX',
-          query: 'tacos',
-          limit: 10
+          near:'Seattle, WA',
+          query: 'pizza',
+          limit: 15
       })
       .then(results => {
           const { venues } = results.response;
