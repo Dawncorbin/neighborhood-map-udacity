@@ -10,12 +10,14 @@ import {
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
+    //Build map
     <GoogleMap
       defaultZoom={8}
       zoom={props.zoom}
       defaultCenter={{ lat: -34.397, lng: 150.644 }}
       center={props.center}
     >
+    {/*Build markers*/}
       {props.markers && props.markers
               .filter(marker => marker.isVisible)
               .map((marker,idx,arr) => {
@@ -27,11 +29,12 @@ const MyMapComponent = withScriptjs(
             onClick={() => props.handleMarkerClick(marker)}
             animation={arr.length === 1 ? google.map.Animation.BOUNCE : google.maps.Animation.DROP}
           >
-
+          {/*Build info windows*/}
             {marker.isOpen &&
               venueInfo.bestPhoto && (
                 <InfoWindow>
                   <React.Fragment>
+                      {/*Display venue image, if available, or placeholder image if not*/}
                       <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={"Venue image"}/>
                     <p>{venueInfo.name}</p>
                   </React.Fragment>

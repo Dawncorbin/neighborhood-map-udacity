@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import venueList from './venueList';
+import VenueList from './VenueList';
 
-export default class sideBar extends Component {
+export default class SideBar extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -14,13 +14,15 @@ export default class sideBar extends Component {
   }
 
   handleFilterVenues = () => {
+    //If search field is not blank, check query against venue list
     if (this.state.query.trim() !== "") {
       const venues = this.props.venues.filter(venue => venue.name
         .toLowerCase()
         .includes(this.state.query.toLowerCase()));
       return venues;
     } else {
-      return this.props.venues
+      //If search field is blank, show all venues - default state
+      return this.props.venues;
     }
   };
 
@@ -51,7 +53,7 @@ export default class sideBar extends Component {
               placeholder={"Search Here"}
               onChange={this.handleChange}/>
 
-          <venueList {...this.props}
+          <VenueList {...this.props}
               venues={this.handleFilterVenues()}
               handleListItemClick ={this.props.handleListItemClick}/>
         </div>

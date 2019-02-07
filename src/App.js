@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './component/Map';
 import SquareAPI from './API/';
-import sideBar from './component/sideBar';
+import SideBar from './component/SideBar';
 
 class App extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class App extends Component {
       });
       this.setState({ markers: Object.assign(this.state.markers, markers) });
     }
-
+//When marker is clicked, open info window
   handleMarkerClick = (marker) => {
       this.closeAllMarkers();
       //console.log(marker);
@@ -47,7 +47,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    window.gm_authFailure = this.gm_authFailure;
       SquareAPI.search({
           near:'Seattle, WA',
           query: 'pizza',
@@ -69,10 +68,7 @@ class App extends Component {
         console.log(results);
       });
   }
-  gm_authFailure() {
-    window.alert("Error getting data from Google Maps")
-  }
-
+  
   render() {
     return (
       <div className="App">
