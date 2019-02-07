@@ -22,7 +22,7 @@ class App extends Component {
       const markers = this.state.markers.map(marker => {
         marker.isOpen = false;
         return marker;
-      })
+      });
       this.setState({ markers: Object.assign(this.state.markers, markers) });
     }
 
@@ -30,13 +30,13 @@ class App extends Component {
       this.closeAllMarkers();
       //console.log(marker);
       marker.isOpen = true;
-      this.setState({markers: Object.assign(this.state.markers,marker)});
+      this.setState({markers: Object.assign(this.state.markers,marker)})
       const venue = this.state.venues.find(venue => venue.id === marker.id);
 
       SquareAPI.getVenueDetails(marker.id)
         .then(res => {
           const newVenue = Object.assign(venue,res.response.venue);
-            this.setState({ venues: Object.assign(this.state.venues, newVenue) });
+          this.setState({ venues: Object.assign(this.state.venues, newVenue) })
           console.log(newVenue);
         });
   }
@@ -70,16 +70,15 @@ class App extends Component {
       });
   }
   gm_authFailure() {
-    window.alret("Error getting data from Google Maps")
+    window.alert("Error getting data from Google Maps")
   }
 
   render() {
     return (
       <div className="App">
           <sideBar {...this.state} handleMarkerClick={this.handleListItemClick}/>
-        <Map {...this.state}
+        <Map aria-label="Map"{...this.state}
         handleMarkerClick={this.handleMarkerClick}/>
-
       </div>
     );
   }
