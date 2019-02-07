@@ -15,11 +15,20 @@ class Helper {
   }
   static urlBuilder(urlPrams){
       if(!urlPrams){
-          return ""
+          return "";
       }
       return Object.keys(urlPrams)
           .map(key => `${key}=${urlPrams[key]}`)
           .join("&");
+  }
+  static verifyStatus(response) {
+    if (response.ok) {
+      return response;
+    } else {
+      let error = new Error(response.statusText);
+      error = response;
+      throw error;
+    }
   }
   static headers() {
 
@@ -34,8 +43,12 @@ class Helper {
       };
       return fetch(
         `${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(urlPrams)}`,
-        requestData
-      ).then(res => res.json());
+        requestData)
+        .then(Helper.verifyStatus)
+        .then(res => res.json())
+        .catch(error => {
+          alert('An error occurred while trying to fetch data - Error Code of: ' + error.response);
+        });
   }
 }
 export default class SquareAPI {
