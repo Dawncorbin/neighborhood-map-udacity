@@ -48,7 +48,7 @@ export default class SideBar extends Component {
       return (
         <div className="SideBar">
           <input
-              input type={"Search"}
+              type={"Search"}
               id={"search"}
               placeholder={"Search Here"}
               onChange={this.handleChange}/>
