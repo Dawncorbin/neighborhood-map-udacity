@@ -9,7 +9,7 @@ class Helper {
         v:"20190131"
       };
       return Object.keys(keys)
-          .map(key => `$[key]=${keys[key]}`)
+          .map(key => `${key}=${keys[key]}`)
           .join("&");
   }
   static urlBuilder(urlPrams){
@@ -34,12 +34,12 @@ class Helper {
         Accept: "application/json"
     };
   }
-  static simpleFetch(endPoint,method,urlPrams){
+  static simpleFetch(endPoint, method, urlPrams){
       let requestData = {
         method,
         headers: Helper.headers()
       };
-      return fetch(`${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(
+      return fetch(`${Helper.baseURL()}${endPoint}${Helper.auth()}&${Helper.urlBuilder(
         urlPrams
       )}`,
         requestData
@@ -52,12 +52,12 @@ class Helper {
 }
 export default class SquareAPI {
     static search(urlPrams){
-      return Helper.simpleFetch(`/venues/search`, "GET", urlPrams);
+      return Helper.simpleFetch(`/venues/search?`, "GET", urlPrams);
     }
     static getVenueDetails(VENUE_ID){
-      return Helper.simpleFetch(`/venues/${VENUE_ID}`, "GET");
+      return Helper.simpleFetch(`/venues/${VENUE_ID}?`, "GET");
     }
     static getVenuePhotos(VENUE_ID) {
-      return Helper.simpleFetch(`/venues/${VENUE_ID}/photos`, "GET");
+      return Helper.simpleFetch(`/venues/${VENUE_ID}/photos?`, "GET");
     }
 }
