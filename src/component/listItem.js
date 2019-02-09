@@ -4,7 +4,7 @@ export default class ListItem extends Component {
   render() {
       return (
         <li tabIndex="0" className="ListItem"
-        onClick={() => this.props.handleListItemClick(this.props)}>
+        onClick={() => this.props.handlelistitemclick(this.props)}>
           <img
             src=
               {this.props.categories[0].icon.prefix+"32"+
