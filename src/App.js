@@ -22,7 +22,7 @@ class App extends Component {
       const markers = this.state.markers.map(marker => {
         marker.isOpen = false;
         return marker;
-      });
+      })
       this.setState({ markers: Object.assign(this.state.markers, markers) });
     }
 //When marker is clicked, open info window
@@ -36,10 +36,10 @@ class App extends Component {
       SquareAPI.getVenueDetails(marker.id)
         .then(res => {
           const newVenue = Object.assign(venue,res.response.venue);
-          this.setState({ venues: Object.assign(this.state.venues, newVenue) })
+          this.setState({ venues: Object.assign(this.state.venues, newVenue) });
           console.log(newVenue);
         });
-  }
+  };
 
   handleMarkerClick = venue => {
     const marker = this.state.markers.find(marker => marker.id === venue.id);

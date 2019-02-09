@@ -9,29 +9,27 @@ class Helper {
         v:"20190131"
       };
       return Object.keys(keys)
-          .map(key => `$[key]=${keys[key]}
-          .join("&")`)
-
+          .map(key => `$[key]=${keys[key]}`)
+          .join("&");
   }
   static urlBuilder(urlPrams){
       if(!urlPrams){
-          return "";
+          return ""
       }
       return Object.keys(urlPrams)
           .map(key => `${key}=${urlPrams[key]}`)
           .join("&");
   }
-  static verifyStatus(response) {
-    if (response.ok) {
-      return response;
-    } else {
-      let error = new Error(response.statusText);
-      error = response;
-      throw error;
-    }
+//  static verifyStatus(response) {
+//    if (response.ok) {
+//      return response;
+//    } else {
+//      let error = new Error(response.statusText);
+//      error = response;
+//      throw error;
+//    }
   }
   static headers() {
-
       return {
           Accept: "application/json"
     };
@@ -41,19 +39,20 @@ class Helper {
         method,
         headers: Helper.headers()
       };
-      return fetch(
-        `${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(urlPrams)}`,
-        requestData)
-        .then(Helper.verifyStatus)
-        .then(res => res.json())
+      return fetch(`${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(
+        urlPrams
+      )}`,
+        requestData
+        //.then(Helper.verifyStatus)
+      ).then(res => res.json())
         .catch(error => {
-          alert('An error occurred while trying to fetch data - Error Code of: ' + error.response);
-        });
+            window.alert("ERROR! " + error);
+      });
   }
 }
 export default class SquareAPI {
     static search(urlPrams){
-      return Helper.simpleFetch("/venues/search", "GET", urlPrams);
+      return Helper.simpleFetch(`/venues/search`, "GET", urlPrams);
     }
     static getVenueDetails(VENUE_ID){
       return Helper.simpleFetch(`/venues/${VENUE_ID}`, "GET");

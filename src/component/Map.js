@@ -35,6 +35,7 @@ const MyMapComponent = withScriptjs(
                 <InfoWindow>
                   <React.Fragment>
                       {/*Display venue image, if available, or placeholder image if not*/}
+                      {/*eslint-disable-next-line */}
                       <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={"Venue image"}/>
                     <p>{venueInfo.name}</p>
                   </React.Fragment>
