@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import listItem from './listItem';
+import ListItem from './ListItem';
 
-export default class venueList extends Component {
+export default class VenueList extends Component {
   render() {
       return (
-        <ol className="venueList">
+        <ol className="VenueList">
           {this.props.venues &&
             this.props.venues.map((venue,idx) => (
-            <listItem key={idx} {...venue} handleListItemClick={this.props.handleListItemClick}/>
+            <ListItem key={idx} {...venue} handlelistitemclick={this.props.handlelistitemclick}/>
           ))}
         </ol>
       )

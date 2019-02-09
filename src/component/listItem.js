@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-export default class listItem extends Component {
+export default class ListItem extends Component {
   render() {
       return (
-        <li tabIndex="0" className="listItem"
+        <li tabIndex="0" className="ListItem"
         onClick={() => this.props.handleListItemClick(this.props)}>
           <img
             src=

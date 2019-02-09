@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './component/Map';
 import SquareAPI from './API/';
-import sideBar from './component/sideBar';
+import SideBar from './component/SideBar';
 
 class App extends Component {
     constructor(props) {
@@ -52,7 +52,7 @@ class App extends Component {
           query: 'pizza',
           limit: 15
       }).then(results => console.log(results));
-}      
+}
 //      .then(results => {
 //          const { venues } = results.response;
 //          const { center } = results.response.geocode.feature.geometry;
@@ -73,9 +73,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <sideBar {...this.state} handleMarkerClick={this.handleListItemClick}/>
+          <SideBar {...this.state} handlemarkerclick={this.handlelistitemclick}/>
         <Map aria-label="Map"{...this.state}
-        handleMarkerClick={this.handleMarkerClick}/>
+        handlemarkerclick={this.handlemarkerclick}/>
       </div>
     );
   }

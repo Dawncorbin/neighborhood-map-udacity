@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import venueList from './venueList';
+import VenueList from './VenueList';
 
-export default class sideBar extends Component {
+export default class SideBar extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -46,16 +46,16 @@ export default class sideBar extends Component {
 
   render() {
       return (
-        <div className="sideBar">
+        <div className="SideBar">
           <input
               input type={"search"}
               id={"search"}
               placeholder={"Search Here"}
               onChange={this.handleChange}/>
 
-          <venueList {...this.props}
+          <VenueList {...this.props}
               venues={this.handleFilterVenues()}
-              handleListItemClick ={this.props.handleListItemClick}/>
+              handlelistitemclick ={this.props.handlelistitemlick}/>
         </div>
       )
   }
