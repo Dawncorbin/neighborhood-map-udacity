@@ -28,10 +28,10 @@ class Helper {
 //      error = response;
 //      throw error;
 //    }
-  }
+//  }
   static headers() {
       return {
-          Accept: "application/json"
+        Accept: "application/json"
     };
   }
   static simpleFetch(endPoint,method,urlPrams){
