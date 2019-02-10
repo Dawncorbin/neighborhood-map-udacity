@@ -50,25 +50,24 @@ class App extends Component {
       SquareAPI.search({
           near:'Seattle, WA',
           query: 'pizza',
-          limit: 15
-      }).then(results => console.log(results));
-}
-//      .then(results => {
-//          const { venues } = results.response;
-//          const { center } = results.response.geocode.feature.geometry;
-//          const markers = venues.map(venue => {
-//              return {
-//                lat: venue.location.lat,
-//                lng: venue.location.lng,
-//                isOpen: false,
-//                isVisible: true,
-//                id: venue.id
-//              };
-//          });
-//          this.setState({ venues, center, markers });
-//        console.log(results);
-//      });
-//  }
+          limit: 5
+      })
+      .then(results => {
+        console.log(results);
+          const { venues } = results.response.venues;
+          const { center } = results.response.geocode.feature.geometry;
+          const markers = results.response.venues.map(venue => {
+              return {
+               lat: venue.location.lat,
+                lng: venue.location.lng,
+                isOpen: false,
+                isVisible: true,
+                id: venue.id
+              };
+          });
+          this.setState({ venues, center, markers });
+      });
+  }
 
   render() {
     return (
