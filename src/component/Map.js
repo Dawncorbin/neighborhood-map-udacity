@@ -1,7 +1,7 @@
 /* global google */
 
 import React, {Component} from "react";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow, } from "react-googls-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow, } from "react-google-maps";
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props =>(
@@ -16,7 +16,7 @@ const MyMapComponent = withScriptjs(
       >
         {props.markers &&
             props.markers.filter(marker => marker.isVisible).map((marker, idx, arr) => {
-              const venueInfo = Props.venues.find(venue => venue.id === marker.id);
+              const venueInfo = props.venues.find(venue => venue.id === marker.id);
               return(
                   <Marker
                       key={idx}
