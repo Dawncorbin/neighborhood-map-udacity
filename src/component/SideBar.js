@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import VenueList from './VenueList';
 
 export default class SideBar extends Component {
-  constructor(props) {
-      super(props);
+  constructor() {
+      super();
       this.state = {
         query:"",
         venues: []
@@ -20,10 +20,9 @@ export default class SideBar extends Component {
         .toLowerCase()
         .includes(this.state.query.toLowerCase()));
       return venues;
-    } else {
+    }
       //If search field is blank, show all venues - default state
       return this.props.venues;
-    }
   };
 
   handleChange = e => {
@@ -57,6 +56,6 @@ export default class SideBar extends Component {
               venues={this.handleFilterVenues()}
               handleListItemClick ={this.props.handleListItemClick}/>
         </div>
-      )
+      );
   }
 }
