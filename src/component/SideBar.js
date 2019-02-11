@@ -9,13 +9,13 @@ export default class SideBar extends Component {
         venues: []
       };
   }
-  showsideBar = e => {
-      this.setState({ show : true })
-  }
+//  showsideBar = e => {
+  //    this.setState({ show : true })
+  //}
 
   handleFilterVenues = () => {
     //If search field is not blank, check query against venue list
-    if (this.state.query.trim() !== "") {
+    if (this.state.query.trim() !== '') {
       const venues = this.props.venues.filter(venue => venue.name
         .toLowerCase()
         .includes(this.state.query.toLowerCase()));
