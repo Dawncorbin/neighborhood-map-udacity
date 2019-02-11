@@ -20,31 +20,34 @@ class Helper {
           .map(key => `${key}=${urlPrams[key]}`)
           .join("&");
   }
-//  static verifyStatus(response) {
-//    if (response.ok) {
-//      return response;
-//    } else {
-//      let error = new Error(response.statusText);
-//      error = response;
-//      throw error;
-//    }
-//  }
   static headers() {
       return {
         Accept: "application/json"
     };
   }
+  static verifyStatus(response) {
+    if (response.ok) {
+      return response;
+    } else {
+      let error = new Error(response.statusText);
+      error = response;
+      throw error;
+    }
+  }
+
   static simpleFetch(endPoint, method, urlPrams){
       let requestData = {
         method,
         headers: Helper.headers()
       };
-      return fetch(`${Helper.baseURL()}${endPoint}${Helper.auth()}&${Helper.urlBuilder(
+      return fetch(
+        `${Helper.baseURL()}${endPoint}${Helper.auth()}&${Helper.urlBuilder(
         urlPrams
       )}`,
         requestData
-        //.then(Helper.verifyStatus)
-      ).then(res => res.json())
+      )
+       .then(Helper.verifyStatus)
+       .then(res => res.json())
         .catch(error => {
             window.alert("ERROR! " + error);
       });
