@@ -70,9 +70,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <SideBar {...this.state} hhandleListItemClick={this.hhandleListItemClick}/>
+          <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
         <Map aria-label="Map"{...this.state}
-        handleMarkerClickarkerclick={this.handleMarkerClickarkerclick}/>
+        handleMarkerClick={this.handleMarkerClick}/>
       </div>
     );
   }
