@@ -20,7 +20,7 @@ const MyMapComponent = withScriptjs(
               return(
                   <Marker
                       key={idx}
-                      position={{ lar: marker.lat, lng: marker.lng }}
+                      position={{ lat: marker.lat, lng: marker.lng }}
                       onClick={() => props.MarkerClick(marker)}
                       animation={
                         arr.length === 1

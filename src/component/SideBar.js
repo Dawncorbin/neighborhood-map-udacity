@@ -16,7 +16,7 @@ export default class SideBar extends Component{
   }
   filterVenues = () => {
     if(this.state.query.trim() !== ""){
-      const venues = this.props.venues.filter(venue =>venue.name.toLowerCase());
+      const venues = this.props.venues.filter(venue =>venue.name.toLowerCase().includes(this.state.query.toLowerCase()));
     return venues;
     }
     else{
@@ -28,7 +28,7 @@ export default class SideBar extends Component{
     this.setState({query:e.target.value});
 
     const markers = this.props.venues.map(venue => {
-      const matched = venue.name.toLowerCase().inclues(e.target.value.toLowerCase());
+      const matched = venue.name.toLowerCase().includes(e.target.value.toLowerCase());
       const marker = this.props.marker.find(marker => marker.id === venue.id);
       if(matched){
         marker.isVisible = true;

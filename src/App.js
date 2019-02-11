@@ -10,6 +10,7 @@ class App extends Component {
     super();
     this.state = {
       venues:[],
+      marker:[],
       center:[],
       zoom: 12,
       updateSuperState: obj =>{
@@ -62,7 +63,7 @@ class App extends Component {
       <div className="App">
 
         <SideBar {...this.state} listItems={this.listItems} />
-      
+
         <Map aria-label="Map"{...this.state} MarkerClick = {this.markerClick}/>
       </div>
     );
