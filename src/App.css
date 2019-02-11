@@ -131,3 +131,16 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 480px) {
+  .listItem {padding: 0px 12px;}
+  .venueList {padding: 0px 12px;}
+}
+
+@media (max-width: 425px) {
+  .venuePhoto {width: 100px; height: 100px;}
+  .venueList {font-size: 0.75rem;}
+  .icon {height: 20px; width: 20px;}
+  #search {height: 2rem; font-size: 1rem;}
+  .sideBar {max-width: 255px;}
+}
